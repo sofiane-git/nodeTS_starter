@@ -1,5 +1,13 @@
-import dotenv from 'dotenv-safe';
+import express from 'express';
 
-dotenv.config();
+const app = express();
+const PORT = process.env.PORT as string;
+const HOSTNAME = process.env.HOSTNAME as string;
 
-console.log(process.env.HOSTNAME);
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on: ${HOSTNAME}:${PORT}`);
+});
